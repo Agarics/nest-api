@@ -71,8 +71,8 @@
   "explorer.fileNesting.patterns": {
     "*.ts": "$(capture).test.ts, $(capture).test.tsx",
     "*.env": "$(capture).env.*",
-    "package.json": "pnpm-lock.yaml,pnpm-workspace.yaml,LICENSE,.gitattributes,.gitignore,.gitpod.yml,CNAME,README*,.npmrc,.browserslistrc",
-    ".eslintrc.cjs": ".eslintignore,.prettierignore,.stylelintignore,.commitlintrc.*,.prettierrc.*,.stylelintrc.*"
+    "package.json": "pnpm-lock.yaml,pnpm-workspace.yaml,LICENSE,.cz-config.js,.simple-git-hooks.js,commitlint.config.js,.gitattributes,.gitignore,.gitpod.yml,CNAME,.npmrc,.browserslistrc,.lintstagedrc.js",
+    ".eslintrc.js": ".eslintignore,.prettierrc,.prettierignore,.stylelintignore,.prettierrc.*,.stylelintrc.*"
   },
   "terminal.integrated.scrollback": 10000,
 }
