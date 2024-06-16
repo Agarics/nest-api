@@ -23,3 +23,14 @@ export const PROJECT = {
   version: packageJSON.version,
   author: packageJSON.author,
 };
+
+export const CROSS_DOMAIN = {
+  allowedOrigins: [],
+  allowedReferer: '',
+};
+
+export const MONGO_DB = {
+  uri:
+    argv.db_uri ||
+    `mongodb://docker-mongo:docker-mongo@127.0.0.1:27017/NestApi?authSource=admin`,
+};
