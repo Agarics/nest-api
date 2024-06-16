@@ -15,7 +15,7 @@ export class LoggingInterceptor implements NestInterceptor {
   intercept(
     context: ExecutionContext,
     next: CallHandler<any>,
-  ): Observable<any> | Promise<Observable<any>> {
+  ): Observable<any> {
     if (!isDevEnv) {
       return next.handle();
     }
