@@ -14,7 +14,7 @@ export class ErrorInterceptor implements NestInterceptor {
   intercept(
     context: ExecutionContext,
     next: CallHandler<any>,
-  ): Observable<any> | Promise<Observable<any>> {
+  ): Observable<any> {
     const target = context.getHandler();
     const { errorCode, errorMessage } = getResponserOptions(target);
     return next.handle().pipe(
