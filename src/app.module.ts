@@ -12,6 +12,8 @@ import { OriginMiddleware } from '@/middlewares/origin.middleware';
 import { ValidationPipe } from '@/pipes/validation.pipe';
 import { Request } from 'express';
 
+import { AuthModule } from '@/modules/auth/auth.module';
+
 @Module({
   imports: [
     ThrottlerModule.forRoot([
@@ -32,6 +34,7 @@ import { Request } from 'express';
     ]),
     HelperModule,
     DatabaseModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
