@@ -56,3 +56,45 @@ export const AWS = {
   s3StaticRegion: argv.aws_s3_static_region as string,
   s3StaticBucket: argv.aws_s3_static_bucket as string,
 };
+
+export const AKISMET = {
+  key: argv.akismet_key || 'your Akismet Key',
+  blog: argv.akismet_blog || 'your Akismet blog site',
+};
+
+export const GOOGLE = {
+  jwtServiceAccountCredentials: argv.google_jwt_cred_json
+    ? JSON.parse(argv.google_jwt_cred_json as string)
+    : null,
+};
+
+// https://learn.microsoft.com/en-us/bingwebmaster/getting-access
+export const BING_INDEXED = {
+  site: argv.bing_site || 'your bing site url.',
+  apiKey: argv.bing_api_key || 'your bing webmaster api key',
+};
+
+export const REDIS = {
+  namespace: argv.redis_namespace || 'nest-api',
+  host: argv.redis_host || 'localhost',
+  port: argv.redis_port || 6379,
+  username: argv.redis_username || null,
+  password: argv.redis_password || '',
+};
+
+export const DB_BACKUP = {
+  s3Region: argv.db_backup_s3_region as string,
+  s3Bucket: argv.db_backup_s3_bucket as string,
+  password: argv.db_backup_file_password as string,
+};
+
+export const DISQUS = {
+  // https://disqus.com/api/applications/<app_id> & Keep permissions: <Read, Write, Manage Forums>
+  adminAccessToken:
+    argv.disqus_admin_access_token || 'Disqus admin access_token',
+  adminUsername: argv.disqus_admin_username || 'Disqus admin username',
+  forum: argv.disqus_forum_shortname || 'Disqus forum shortname',
+  // https://disqus.com/api/applications/
+  publicKey: argv.disqus_public_key || 'Disqus application public_key',
+  secretKey: argv.disqus_secret_key || 'Disqus application secret_key',
+};

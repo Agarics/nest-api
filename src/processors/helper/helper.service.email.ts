@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import { isDevEnv } from '@/app.environment';
 import { createLogger } from '@/utils/logger';
 import { EMAIL } from '@/app.config';
-import { getMessageFromNormalError } from '@/processors/transformers/error.transformer';
+import { getMessageFromNormalError } from '@/transformers/error.transformer';
 
 const logger = createLogger({ scope: 'EmailService', time: isDevEnv });
 

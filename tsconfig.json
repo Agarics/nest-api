@@ -22,5 +22,11 @@
     "paths": {
       "@/*": ["src/*"]
     }
-  }
+  },
+  "typeAcquisition": {
+    "include": ["jest"]
+  },
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["node_modules", "dist"],
+  "typeRoots": ["node_modules/@types"]
 }
