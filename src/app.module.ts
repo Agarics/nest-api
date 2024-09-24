@@ -1,18 +1,30 @@
+import { Request } from 'express';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { APP_GUARD, APP_PIPE } from '@nestjs/core';
+import { APP_INTERCEPTOR, APP_GUARD, APP_PIPE } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule, minutes } from '@nestjs/throttler';
 import { AppController } from './app.controller';
 
-import { DatabaseModule } from '@/processors/database/database.module';
-import { HelperModule } from '@/processors/helper/helper.module';
+// framework
+import { CacheInterceptor } from '@/interceptors/cache.interceptor';
+import { ValidationPipe } from '@/pipes/validation.pipe';
 
+// middlewares
 import { CorsMiddleware } from '@/middlewares/cors.middleware';
 import { OriginMiddleware } from '@/middlewares/origin.middleware';
 
-import { ValidationPipe } from '@/pipes/validation.pipe';
-import { Request } from 'express';
+// universal modules
+import { DatabaseModule } from '@/processors/database/database.module';
+import { CacheModule } from '@/processors/cache/cache.module';
+import { HelperModule } from '@/processors/helper/helper.module';
 
+// BIZ helper module
+import { ExpansionModule } from '@/modules/expansion/expansion.module';
+
+// BIZ modules
 import { AuthModule } from '@/modules/auth/auth.module';
+import { TagModule } from '@/modules/tag/tag.module';
+import { CategoryModule } from '@/modules/category/category.module';
+import { ArticleModule } from '@/modules/article/article.module';
 
 @Module({
   imports: [
@@ -34,10 +46,20 @@ import { AuthModule } from '@/modules/auth/auth.module';
     ]),
     HelperModule,
     DatabaseModule,
+    CacheModule,
+    ExpansionModule,
+    // BIZs
     AuthModule,
+    TagModule,
+    ArticleModule,
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: CacheInterceptor,
+    },
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,

@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { getMessageFromAxiosError } from '@/processors/transformers/error.transformer';
+import { getMessageFromAxiosError } from '@/transformers/error.transformer';
 import { createLogger } from '@/utils/logger';
 import { isDevEnv } from '@/app.environment';
 
